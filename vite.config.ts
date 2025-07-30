@@ -8,21 +8,24 @@ export default defineConfig(({ mode }) => {
     base: '/upwise/',
     publicDir: 'public',
     build: {
-      // Use a more compatible build target
-      target: 'es2015',
       rollupOptions: {
         output: {
-          // Bundle everything into a single file to avoid module issues
-          format: 'iife',
-          entryFileNames: 'assets/[name]-[hash].js',
+          // Ensure proper MIME types for GitHub Pages
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
+            if (/\.(css)$/.test(assetInfo.name)) {
+              return `assets/[name]-[hash][extname]`;
+            }
+            if (/\.(js)$/.test(assetInfo.name)) {
+              return `assets/[name]-[hash].js`;
+            }
+            return `assets/[name]-[hash][extname]`;
+          },
           chunkFileNames: 'assets/[name]-[hash].js',
-          assetFileNames: 'assets/[name]-[hash][extname]',
-          // Remove module type from script tags
-          manualChunks: undefined,
+          entryFileNames: 'assets/[name]-[hash].js',
         },
       },
-      // Ensure no module type is added
-      modulePreload: false,
     },
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
