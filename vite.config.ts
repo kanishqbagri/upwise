@@ -10,8 +10,18 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          // Ensure proper file extensions
-          assetFileNames: 'assets/[name]-[hash][extname]',
+          // Ensure proper MIME types for GitHub Pages
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
+            if (/\.(css)$/.test(assetInfo.name)) {
+              return `assets/[name]-[hash][extname]`;
+            }
+            if (/\.(js)$/.test(assetInfo.name)) {
+              return `assets/[name]-[hash].js`;
+            }
+            return `assets/[name]-[hash][extname]`;
+          },
           chunkFileNames: 'assets/[name]-[hash].js',
           entryFileNames: 'assets/[name]-[hash].js',
         },
