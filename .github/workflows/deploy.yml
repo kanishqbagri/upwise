@@ -27,6 +27,9 @@ jobs:
       - name: Copy .nojekyll file
         run: echo > dist/.nojekyll
 
+      - name: Create gh-pages branch (if missing)
+        run: git checkout --orphan gh-pages && git reset --hard && git commit --allow-empty -m "Initialize gh-pages" && git push origin gh-pages
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
