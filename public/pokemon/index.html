@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Trivia Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'roboto': ['"Roboto"', 'sans-serif'],
+            },
+            colors: {
+              'primary': '#0A3D62',       // Deep Navy Blue
+              'primary-hover': '#1B4F72', // Slightly lighter navy
+              'accent': '#FFD700',       // Gold
+              'accent-hover': '#EAB308',  // Darker Gold
+              'success': '#16A34A',       // Strong Green
+              'danger': '#DC2626',        // Strong Red
+              'light': '#F1F5F9',        // Off-white (for text)
+              'dark': '#0F172A',         // Near-black (for backgrounds)
+              'muted': '#475569',        // Slate Gray
+              'text-light': '#E2E8F0',    // Light gray text
+              'text-dark': '#0F172A',     // Dark text for on-gold buttons
+            },
+            animation: {
+              'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+              'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'trophy-glow': 'trophy-glow 2.5s ease-in-out infinite',
+              'confetti-fall': 'confetti-fall 3s linear forwards',
+              'trophy-pop-in': 'trophy-pop-in 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards',
+              'trophy-float': 'trophy-float 3s ease-in-out infinite',
+              'sparkle-twinkle': 'sparkle-twinkle 1.8s ease-in-out infinite',
+            },
+            keyframes: {
+              'fade-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'trophy-glow': {
+                '0%, 100%': { filter: 'drop-shadow(0 0 5px #FFD700)' },
+                '50%': { filter: 'drop-shadow(0 0 25px #FFD700) drop-shadow(0 0 10px #FFE870)' },
+              },
+              'confetti-fall': {
+                '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'translateY(100vh) rotate(720deg)', opacity: '0' },
+              },
+               'trophy-pop-in': {
+                '0%': { opacity: '0', transform: 'scale(0.3)' },
+                '60%': { opacity: '1', transform: 'scale(1.1)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              'trophy-float': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              'sparkle-twinkle': {
+                '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '0.5', transform: 'scale(0.75)' },
+              },
+            }
+          },
+        },
+      };
+    </script>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/pokemon/assets/index-DHTUHuG7.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

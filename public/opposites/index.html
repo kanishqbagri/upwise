@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opposites Flash Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-yellow': '#FFD700',
+              'brand-purple': '#8A2BE2',
+              'brand-light-purple': '#E6E6FA',
+              'brand-dark-purple': '#4B0082',
+            },
+            fontFamily: {
+              'sans': ['"Comic Sans MS"', 'cursive', 'sans-serif'],
+            },
+            transformStyle: {
+              'preserve-3d': 'preserve-3d',
+            },
+            backfaceVisibility: {
+              'hidden': 'hidden',
+            },
+          },
+        },
+        plugins: [
+          function({ addUtilities }) {
+            addUtilities({
+              '.transform-style-preserve-3d': {
+                'transform-style': 'preserve-3d',
+              },
+              '.backface-hidden': {
+                'backface-visibility': 'hidden',
+              },
+              '.rotate-y-180': {
+                'transform': 'rotateY(180deg)',
+              },
+            })
+          }
+        ],
+      }
+    </script>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/opposites/assets/index-DraZ2O2L.js"></script>
+</head>
+  <body class="bg-brand-light-purple">
+    <div id="root"></div>
+  </body>
+</html>
