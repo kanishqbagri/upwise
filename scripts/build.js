@@ -5,7 +5,10 @@ import { join } from 'path';
 const apps = [
   { name: 'pokemon', path: 'pokémon-trivia-challenge' },
   { name: 'math', path: 'princess-math-quest' },
-  { name: 'opposites', path: 'opposites-flash-cards-for-kids' }
+  { name: 'opposites', path: 'opposites-flash-cards-for-kids' },
+  { name: 'lightbulb', path: 'light-bulb-app' },
+  { name: 'maze', path: 'maze-solver-app' },
+  { name: 'green-thumb', path: 'green-thumb-ai' }
 ];
 
 console.log('🚀 Starting build process...');

@@ -35,6 +35,39 @@ export const apps: App[] = [
     new: true
   },
   {
+    id: 'light-bulb',
+    title: 'Interactive Light Bulb',
+    description: 'Click the light bulb to make it glow! Count your clicks and discover funny messages.',
+    category: 'fun-funky',
+    tags: ['interactive', 'fun', 'clicking', 'animation'],
+    url: '/lightbulb/',
+    icon: '💡',
+    featured: false,
+    new: true
+  },
+  {
+    id: 'maze-solver',
+    title: 'Maze Solver',
+    description: 'Watch a stick figure automatically solve randomly generated mazes with celebration effects.',
+    category: 'fun-funky',
+    tags: ['puzzle', 'automation', 'animation', 'maze'],
+    url: '/maze/',
+    icon: '🧩',
+    featured: false,
+    new: true
+  },
+  {
+    id: 'green-thumb-ai',
+    title: 'Green Thumb AI',
+    description: 'Identify plants with AI! Upload a photo and get detailed care instructions and fun facts.',
+    category: 'productivity-tools',
+    tags: ['ai', 'plants', 'identification', 'botany', 'productivity'],
+    url: '/green-thumb/',
+    icon: '🌱',
+    featured: true,
+    new: true
+  },
+  {
     id: 'dev-sandbox',
     title: 'Dev Sandbox',
     description: 'An interactive coding environment to test and run snippets.',

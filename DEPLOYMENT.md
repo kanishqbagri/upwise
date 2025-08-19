@@ -1,108 +1,146 @@
-# Upwise Deployment Guide
+# Deployment Guide for Green Thumb AI
 
-This repository has been rearchitected for deployment to Vercel with the following structure:
+## Overview
 
-## URL Structure
-- `https://upwise.vercel.app/` → Landing page (root)
-- `https://upwise.vercel.app/pokemon/` → Pokémon Trivia Challenge app
-- `https://upwise.vercel.app/math/` → Princess Math Quest app
-- `https://upwise.vercel.app/opposites/` → Opposites Flash Cards app
+The Green Thumb AI app has been successfully refactored for Vercel deployment and is now integrated into the main Upwise platform. Here's what was accomplished:
 
-## Architecture
+## ✅ Completed Refactoring
 
-### Main Landing Page
-- Located in the root directory
-- Built with Vite/React
-- Serves as the entry point with links to all sub-apps
-- Build output: `dist/`
+### 1. **Environment Variables Fixed**
+- Changed from `process.env.API_KEY` to `import.meta.env.VITE_GEMINI_API_KEY`
+- Added proper TypeScript declarations in `vite-env.d.ts`
+- Updated Vite configuration to remove old environment handling
 
-### Sub-Apps
-Each sub-app is a complete, independent Vite/React application:
-- `pokémon-trivia-challenge/` → Built to `public/pokemon/`
-- `princess-math-quest/` → Built to `public/math/`
-- `opposites-flash-cards-for-kids/` → Built to `public/opposites/`
+### 2. **Build System Integration**
+- Added green thumb app to `scripts/build.js`
+- Updated `vercel.json` with routing for `/green-thumb/`
+- Fixed TypeScript configuration and dependencies
 
-## Build Process
+### 3. **Landing Page Integration**
+- Added Green Thumb AI to `src/data/apps.ts`
+- Mapped to "Productivity & Tools" category
+- Set as featured and new app with 🌱 icon
 
-The build process is handled by the main `package.json` scripts:
+### 4. **Dependencies Updated**
+- Downgraded React to v18.2.0 for compatibility
+- Added proper TypeScript types
+- Updated Vite configuration with React plugin
 
-1. **`npm run build:subapps`** - Builds all sub-apps and copies them to `public/`
-2. **`npm run build:main`** - Builds the main landing page
-3. **`npm run build`** - Runs both steps in sequence
+## 🚀 Deployment Steps
 
-### Build Script Details
-The `scripts/build.js` script:
-- Installs dependencies for each sub-app
-- Builds each sub-app using its own Vite configuration
-- Copies build outputs to the appropriate `public/` subdirectory
-- Handles errors gracefully
+### 1. **Set Up Environment Variables (SECURE)**
 
-## Vercel Configuration
+⚠️ **IMPORTANT SECURITY UPDATE**: The API key is now handled securely through a backend serverless function.
 
-The `vercel.json` file configures:
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist/`
-- **Framework**: Vite
-- **Rewrites**: Routes sub-app URLs to their respective `index.html` files
-- **Headers**: Cache control for static assets
+In your Vercel dashboard, add the following environment variable:
 
-## Local Development
-
-### Running the Landing Page
-```bash
-npm run dev
+```
+GEMINI_API_KEY=your_actual_gemini_api_key
 ```
 
-### Running Individual Sub-Apps
-```bash
-# Pokémon app
-cd pokémon-trivia-challenge && npm run dev
+**Note the difference**: 
+- ❌ OLD (INSECURE): `VITE_GEMINI_API_KEY` - exposed to client
+- ✅ NEW (SECURE): `GEMINI_API_KEY` - server-side only
 
-# Math app
-cd princess-math-quest && npm run dev
+**To get a Gemini API key:**
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create a new API key
+3. Copy the key and add it to Vercel environment variables (without VITE_ prefix)
 
-# Opposites app
-cd opposites-flash-cards-for-kids && npm run dev
-```
+### 2. **Deploy to Vercel**
 
-## Deployment
+The app is now ready for deployment. When you push to your main branch, Vercel will:
 
-1. **Connect to Vercel**: Link your GitHub repository to Vercel
-2. **Build Settings**: Vercel will automatically detect the build command from `vercel.json`
-3. **Environment Variables**: Set any required environment variables (e.g., `GEMINI_API_KEY`) in Vercel dashboard
-4. **Deploy**: Push to main branch to trigger automatic deployment
+1. Run `npm run build` (which builds all sub-apps including green-thumb)
+2. Deploy the main app to the root domain
+3. Make green-thumb available at `/green-thumb/`
 
-## File Structure After Build
+### 3. **Verify Deployment**
+
+After deployment, you should be able to access:
+- Main app: `https://your-domain.vercel.app/`
+- Green Thumb AI: `https://your-domain.vercel.app/green-thumb/`
+
+## 📁 File Structure
 
 ```
 upwise/
-├── dist/                    # Main landing page build
-├── public/
-│   ├── pokemon/            # Pokémon app build
-│   ├── math/              # Math app build
-│   ├── opposites/         # Opposites app build
-│   └── favicon.ico
-├── pokémon-trivia-challenge/  # Source code
-├── princess-math-quest/       # Source code
-├── opposites-flash-cards-for-kids/  # Source code
-├── package.json
-├── vercel.json
-└── scripts/build.js
+├── green-thumb-ai/           # The refactored app
+│   ├── components/           # React components
+│   ├── services/            # Gemini AI service
+│   ├── vite-env.d.ts        # Environment type declarations
+│   ├── tsconfig.json        # TypeScript config
+│   └── package.json         # Dependencies
+├── scripts/build.js         # Updated to include green-thumb
+├── vercel.json             # Updated with green-thumb routing
+└── src/data/apps.ts        # Updated with green-thumb entry
 ```
 
-## Troubleshooting
+## 🔧 Local Development
 
-### Build Failures
-- Ensure all sub-apps have valid `package.json` files
-- Check that all dependencies are properly specified
-- Verify that each sub-app's Vite config has the correct `base` path
+To test locally:
 
-### Routing Issues
-- Verify that `vercel.json` rewrites are correctly configured
-- Ensure sub-apps are built to the correct `public/` subdirectories
-- Check that each sub-app's `index.html` is in the root of its build directory
+```bash
+# Install dependencies
+npm install
 
-### Asset Loading Issues
-- Confirm that each sub-app's Vite config has the correct `base` path
-- Check that assets are being copied correctly during build
-- Verify that asset paths in the built HTML files are correct
+# Set environment variable
+echo "VITE_GEMINI_API_KEY=your_key_here" > green-thumb-ai/.env
+
+# Start development server
+cd green-thumb-ai && npm run dev
+```
+
+## 🎯 Features
+
+The Green Thumb AI app includes:
+- **Plant Identification**: Upload photos to identify plants
+- **Care Instructions**: Get watering and sunlight requirements
+- **Interactive Hotspots**: Click on plant features for details
+- **Responsive Design**: Works on all devices
+- **Error Handling**: Graceful error messages and retry options
+
+## 🐛 Troubleshooting
+
+### Common Issues:
+
+1. **"Gemini API key not configured"**
+   - Ensure `VITE_GEMINI_API_KEY` is set in Vercel environment variables
+   - Check that the key is valid and has proper permissions
+
+2. **Build fails**
+   - Run `npm install` in the green-thumb-ai directory
+   - Check that all dependencies are properly installed
+
+3. **App not accessible at /green-thumb/**
+   - Verify the vercel.json routing configuration
+   - Check that the build process completed successfully
+
+## 🔒 Security Implementation
+
+### API Key Protection
+- **Backend Proxy**: API calls now go through a Vercel serverless function (`/api/identify-plant`)
+- **Server-side Only**: Gemini API key is stored server-side and never exposed to the client
+- **No Client-side Secrets**: Frontend code contains no sensitive information
+
+### How It Works
+1. **Frontend**: Converts image to base64 and sends to `/api/identify-plant`
+2. **Backend**: Serverless function receives image data and calls Gemini API
+3. **Secure**: API key is only accessible on the server, never in browser
+
+### Previous Security Issue (FIXED)
+- ❌ **Before**: `VITE_GEMINI_API_KEY` was embedded in client JavaScript (visible to anyone)
+- ✅ **After**: `GEMINI_API_KEY` is server-side only, completely hidden from users
+
+## 📝 Notes
+
+- The app uses Google Gemini 2.5 Flash for plant identification
+- All API calls are now made through a secure backend proxy
+- The app is designed for educational and entertainment purposes
+- Images are processed locally and sent securely to the backend API
+
+## 🔗 Links
+
+- **Green Thumb AI**: `/green-thumb/`
+- **Main Landing Page**: `/`
+- **Productivity Tools Category**: `/category/productivity-tools`

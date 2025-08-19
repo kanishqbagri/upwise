@@ -1,0 +1,7 @@
+{
+  "name": "Green Thumb AI",
+  "description": "An intelligent plant identification app that uses AI to recognize plants from your photos. Get detailed information including plant type, care instructions (water, sunlight), origin, and fun facts presented in an interactive way.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
