@@ -8,7 +8,8 @@ const apps = [
   { name: 'opposites', path: 'opposites-flash-cards-for-kids' },
   { name: 'lightbulb', path: 'light-bulb-app' },
   { name: 'maze', path: 'maze-solver-app' },
-  { name: 'green-thumb', path: 'green-thumb-ai' }
+  { name: 'green-thumb', path: 'green-thumb-ai' },
+  { name: 'weekly-history', path: 'weekly-history-app' }
 ];
 
 console.log('🚀 Starting build process...');

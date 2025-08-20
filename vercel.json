@@ -26,6 +26,10 @@
     {
       "source": "/green-thumb/(.*)",
       "destination": "/green-thumb/index.html"
+    },
+    {
+      "source": "/weekly-history/(.*)",
+      "destination": "/weekly-history/index.html"
     }
   ],
   "headers": [
@@ -76,6 +80,15 @@
     },
     {
       "source": "/green-thumb/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/weekly-history/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

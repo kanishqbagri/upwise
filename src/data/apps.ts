@@ -68,6 +68,17 @@ export const apps: App[] = [
     new: true
   },
   {
+    id: 'weekly-history',
+    title: 'Weekly Dose of History',
+    description: 'Get fascinating historical events delivered to your inbox weekly. From inventions to athletes, engineering marvels to world-changing moments.',
+    category: 'learn-play',
+    tags: ['history', 'newsletter', 'education', 'email', 'learning'],
+    url: '/weekly-history/',
+    icon: '📚',
+    featured: true,
+    new: true
+  },
+  {
     id: 'dev-sandbox',
     title: 'Dev Sandbox',
     description: 'An interactive coding environment to test and run snippets.',
