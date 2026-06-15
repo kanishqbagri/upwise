@@ -1,0 +1,54 @@
+:root {
+  --bg-0: #05060a;
+  --bg-1: #0a0d18;
+  --fg: #e7ecff;
+  --fg-dim: #6b7390;
+  --accent: #6df7ff;
+  --accent-glow: rgba(109, 247, 255, 0.45);
+  --danger: #ff5e7a;
+  --grid: rgba(109, 247, 255, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: radial-gradient(
+      ellipse at top,
+      var(--bg-1) 0%,
+      var(--bg-0) 60%
+    ),
+    var(--bg-0);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display",
+    "Inter", sans-serif;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  z-index: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
