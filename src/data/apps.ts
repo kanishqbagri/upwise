@@ -79,6 +79,17 @@ export const apps: App[] = [
     new: true
   },
   {
+    id: 'bubble-pop',
+    title: 'Bubble Pop',
+    description: 'A minimalist, futuristic bubble-popping game. Pop unlimited bubbles, track your score, exit when you have had enough.',
+    category: 'fun-funky',
+    tags: ['game', 'casual', 'arcade', 'futuristic', 'minimalist'],
+    url: '/bubble-pop/',
+    icon: '🫧',
+    featured: false,
+    new: true
+  },
+  {
     id: 'dev-sandbox',
     title: 'Dev Sandbox',
     description: 'An interactive coding environment to test and run snippets.',

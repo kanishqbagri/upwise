@@ -9,7 +9,8 @@ const apps = [
   { name: 'lightbulb', path: 'light-bulb-app' },
   { name: 'maze', path: 'maze-solver-app' },
   { name: 'green-thumb', path: 'green-thumb-ai' },
-  { name: 'weekly-history', path: 'weekly-history-app' }
+  { name: 'weekly-history', path: 'weekly-history-app' },
+  { name: 'bubble-pop', path: 'bubble-pop' }
 ];
 
 console.log('🚀 Starting build process...');

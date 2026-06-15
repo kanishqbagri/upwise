@@ -30,6 +30,10 @@
     {
       "source": "/weekly-history/(.*)",
       "destination": "/weekly-history/index.html"
+    },
+    {
+      "source": "/bubble-pop/(.*)",
+      "destination": "/bubble-pop/index.html"
     }
   ],
   "headers": [
@@ -89,6 +93,15 @@
     },
     {
       "source": "/weekly-history/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/bubble-pop/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
