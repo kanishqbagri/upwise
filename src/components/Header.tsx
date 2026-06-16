@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ onThemeToggle, isDarkMode }) => 
               component="div"
               sx={{
                 fontWeight: 800,
-                background: 'linear-gradient(135deg, #00BCD4, #FF6B9D)',
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',

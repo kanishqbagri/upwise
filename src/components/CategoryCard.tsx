@@ -30,6 +30,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({ category, onClick })
         '&:hover': {
           borderColor: category.color,
           background: `linear-gradient(135deg, ${category.color}15, ${category.color}10)`,
+          boxShadow: `0 12px 40px rgba(0,0,0,0.12), 0 0 28px ${category.color}28`,
         },
       }}
       onClick={onClick}

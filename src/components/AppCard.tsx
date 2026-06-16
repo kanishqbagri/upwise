@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { Launch, NewReleases, Schedule } from '@mui/icons-material';
 import { App } from '../types';
+import { categories } from '../data/apps';
 
 interface AppCardProps {
   app: App;
@@ -19,6 +20,7 @@ interface AppCardProps {
 export const AppCard: React.FC<AppCardProps> = ({ app, onClick }) => {
   const theme = useTheme();
   const isDummyApp = app.url === '#';
+  const categoryColor = categories.find(c => c.id === app.category)?.color ?? theme.palette.primary.main;
 
   return (
     <Card
@@ -29,8 +31,11 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onClick }) => {
         cursor: isDummyApp ? 'default' : 'pointer',
         position: 'relative',
         opacity: isDummyApp ? 0.7 : 1,
+        border: 'none',
+        borderLeft: `4px solid ${categoryColor}`,
         '&:hover': {
           transform: isDummyApp ? 'none' : 'translateY(-4px)',
+          boxShadow: isDummyApp ? undefined : `0 12px 40px rgba(0,0,0,0.12), 0 0 28px ${categoryColor}28`,
         },
       }}
       onClick={isDummyApp ? undefined : onClick}
